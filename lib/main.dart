@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:rideusertesteapp/model/admin_users_manager.dart';
 import 'package:rideusertesteapp/model/cart_manager.dart';
 import 'package:rideusertesteapp/model/home_manager.dart';
 import 'package:rideusertesteapp/model/orderModel.dart';
@@ -44,6 +45,13 @@ class App extends StatelessWidget {
             update: (_, userManager, cartManager) =>
                 cartManager ..updateUser(userManager),
         ),
+        ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
+          create: (_) => AdminUsersManager(),
+          lazy: false,
+          update: (_, userManager, adminUsersManager) =>
+          adminUsersManager ..updateUser(userManager),
+        ),
+
         /*
         ChangeNotifierProxyProvider<UserManager, OrdersManager>(
           create: (_) => OrdersManager(),

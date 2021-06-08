@@ -4,6 +4,7 @@ import 'package:rideusertesteapp/common/customDrawer.dart';
 
 import 'package:rideusertesteapp/model/pageManager.dart';
 import 'package:rideusertesteapp/model/userManager.dart';
+import 'package:rideusertesteapp/screens/admin_users/admin_users_screen.dart';
 import 'package:rideusertesteapp/screens/home/home_screen.dart';
 import 'package:rideusertesteapp/screens/orders/orders_screen.dart';
 import 'package:rideusertesteapp/screens/tours/toursScreen.dart';
@@ -32,12 +33,7 @@ class BaseScreen extends StatelessWidget {
               ),
               if(userManager.adminEnabled)
                 ... [
-                  Scaffold(
-                    drawer: CustomDrawer(),
-                    appBar: AppBar(
-                      title: Text('Usuários'),
-                    ),
-                  ),
+                  AdminUsersScreen(),
                   Scaffold(
                     drawer: CustomDrawer(),
                     appBar: AppBar(
