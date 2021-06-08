@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rideusertesteapp/common/customDrawer.dart';
 
 import 'package:rideusertesteapp/model/pageManager.dart';
+import 'package:rideusertesteapp/model/userManager.dart';
 import 'package:rideusertesteapp/screens/home/home_screen.dart';
 import 'package:rideusertesteapp/screens/orders/orders_screen.dart';
 import 'package:rideusertesteapp/screens/tours/toursScreen.dart';
@@ -14,20 +15,39 @@ class BaseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => PageManager(pageController),
-      child: PageView(
-        controller: pageController,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          HomeScreen(),
-          ToursScreen(),
-          OrdersScreen(),
-          Scaffold(
-            drawer: CustomDrawer(),
-            appBar: AppBar(
-              title: Text('#4'),
-            ),
-          ),
-        ],
+      child: Consumer<UserManager>(
+        builder: (_, userManager, __){
+          return PageView(
+            controller: pageController,
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              HomeScreen(),
+              ToursScreen(),
+              OrdersScreen(),
+              Scaffold(
+                drawer: CustomDrawer(),
+                appBar: AppBar(
+                  title: Text('#4'),
+                ),
+              ),
+              if(userManager.adminEnabled)
+                ... [
+                  Scaffold(
+                    drawer: CustomDrawer(),
+                    appBar: AppBar(
+                      title: Text('Usuários'),
+                    ),
+                  ),
+                  Scaffold(
+                    drawer: CustomDrawer(),
+                    appBar: AppBar(
+                      title: Text('Pedidos'),
+                    ),
+                  ),
+                ],
+            ],
+          );
+        },
       ),
     );
   }
