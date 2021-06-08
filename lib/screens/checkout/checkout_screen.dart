@@ -18,63 +18,63 @@ class CheckoutScreen extends StatelessWidget {
     return ChangeNotifierProxyProvider<CartManager, CheckoutManager>(
       create: (_) => CheckoutManager(),
       update: (_, cartManager, checkoutManager) =>
-      checkoutManager..updateCart(cartManager),
+          checkoutManager..updateCart(cartManager),
       lazy: false,
       child: Scaffold(
-          key: scaffoldKey,
-          appBar: AppBar(
-            title: Text('Pagamento'),
-            centerTitle: true,
-          ),
-          body: GestureDetector(
-            onTap: (){
-              FocusScope.of(context).unfocus();
-            },
-            child: Consumer<CheckoutManager>(
-              builder: (_, checkoutManager, __) {
-                if (checkoutManager.loading) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation(Colors.white),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          'Processando seu pagamento',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 16,
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }
-                return Form(
-                  key: formKey,
-                  child: ListView(
+        key: scaffoldKey,
+        appBar: AppBar(
+          title: Text('Pagamento'),
+          centerTitle: true,
+        ),
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+          },
+          child: Consumer<CheckoutManager>(
+            builder: (_, checkoutManager, __) {
+              if (checkoutManager.loading) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CreditCardWidget(
-                        creditCard
+                      CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.white),
                       ),
-                      CPFField(),
-                      PriceCard(
-                        buttonText: 'Finalizar Pedido',
-                        onPressed: () {
-                          checkoutManager.checkout(
-                            onSuccess: (orderModel) {
-                              Navigator.of(context).popUntil(
-                                      (route) => route.settings.name == '/');
-                              //context.read<PageManager>().setPage(2);
-                              Navigator.of(context)
-                                  .pushNamed('/confirmation', arguments: orderModel);
-                            },
-                          );
-                          //if (formKey.currentState.validate()) {
-                            //formKey.currentState.save();
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Processando seu pagamento',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              }
+              return Form(
+                key: formKey,
+                child: ListView(
+                  children: [
+                    CreditCardWidget(creditCard),
+                    CPFField(),
+                    PriceCard(
+                      buttonText: 'Finalizar Pedido',
+                      onPressed: () {
+                        checkoutManager.checkout(
+                          onSuccess: (orderModel) {
+                            Navigator.of(context).popUntil(
+                                (route) => route.settings.name == '/');
+                            //context.read<PageManager>().setPage(2);
+                            Navigator.of(context).pushNamed(
+                              '/confirmation',
+                              arguments: orderModel,
+                            );
+                          },
+                        );
+                        //if (formKey.currentState.validate()) {
+                        //formKey.currentState.save();
 
                         /*
                         checkoutManager.checkout(
@@ -92,16 +92,15 @@ class CheckoutScreen extends StatelessWidget {
                         );
                         */
 
-                          //}
-
-                        }, //checkoutManager.checkout(),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
+                        //}
+                      }, //checkoutManager.checkout(),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
+        ),
       ),
     );
   }
