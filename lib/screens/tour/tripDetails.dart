@@ -1,5 +1,6 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:rideusertesteapp/model/cart_manager.dart';
 import 'package:rideusertesteapp/model/toursModel.dart';
@@ -25,6 +26,22 @@ class TripDetailsScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text("Detalhes"),
+          actions: [
+            Consumer<UserManager>(
+              builder: (_, userManager, __){
+                if(userManager.adminEnabled){
+                  return IconButton(
+                      onPressed: (){
+                        Navigator.of(context).pushReplacementNamed('/edit_tour');
+                      },
+                      icon: Icon(Icons.edit)
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            )
+          ],
         ),
         body: ListView(
           children: [

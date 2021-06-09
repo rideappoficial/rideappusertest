@@ -13,6 +13,7 @@ import 'package:rideusertesteapp/screens/base/baseScreen.dart';
 import 'package:rideusertesteapp/screens/cart/cartScreen.dart';
 import 'package:rideusertesteapp/screens/checkout/checkout_screen.dart';
 import 'package:rideusertesteapp/screens/confirmation/confirmation_screen.dart';
+import 'package:rideusertesteapp/screens/edit_tour/edit_tour_screen.dart';
 import 'package:rideusertesteapp/screens/login/loginScreen.dart';
 import 'package:rideusertesteapp/screens/orders/orders_screen.dart';
 import 'package:rideusertesteapp/screens/signup/signupScreen.dart';
@@ -104,6 +105,11 @@ class App extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (_) => CartScreen(),
                 settings: settings,
+              );
+            case '/edit_tour':
+              return MaterialPageRoute(
+                builder: (_) => EditTourScreen(),
+                //settings: settings,
               );
             case '/checkout':
               return MaterialPageRoute(
