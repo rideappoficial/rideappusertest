@@ -32,7 +32,10 @@ class TripDetailsScreen extends StatelessWidget {
                 if(userManager.adminEnabled){
                   return IconButton(
                       onPressed: (){
-                        Navigator.of(context).pushReplacementNamed('/edit_tour');
+                        Navigator.of(context).pushReplacementNamed(
+                            '/edit_tour',
+                            arguments: tourModel
+                        );
                       },
                       icon: Icon(Icons.edit)
                   );

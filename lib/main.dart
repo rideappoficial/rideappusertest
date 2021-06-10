@@ -108,8 +108,9 @@ class App extends StatelessWidget {
               );
             case '/edit_tour':
               return MaterialPageRoute(
-                builder: (_) => EditTourScreen(),
-                //settings: settings,
+                builder: (_) => EditTourScreen(
+                  settings.arguments as TourModel
+                ),
               );
             case '/checkout':
               return MaterialPageRoute(

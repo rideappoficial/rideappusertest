@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rideusertesteapp/model/toursModel.dart';
 
 class EditTourScreen extends StatelessWidget {
+  //const EditTourScreen({this.tourModel});
+  const EditTourScreen(this.tourModel);
+  final TourModel tourModel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,11 @@ class EditTourScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.white,
-      body: Container(),
+      body: ListView(
+        children: [
+          //ImagesForm()
+        ],
+      ),
     );
   }
 }
