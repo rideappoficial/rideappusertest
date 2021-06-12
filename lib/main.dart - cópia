@@ -27,7 +27,7 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //try {
+    try {
       return MultiProvider(
         providers: [
           ChangeNotifierProvider(
@@ -42,13 +42,14 @@ class App extends StatelessWidget {
             create: (_) => HomeManager(),
             lazy: false,
           ),
+
           ChangeNotifierProxyProvider<UserManager, CartManager>(
               create: (_) => CartManager(),
               lazy: false,
               update: (_, userManager, cartManager) =>
                   cartManager ..updateUser(userManager),
           ),
-          // Erro aqui abaixo ..
+          // Erro aqui ..
           ChangeNotifierProxyProvider<UserManager, OrdersManager>(
             create: (_) => OrdersManager(),
             lazy: false,
@@ -72,8 +73,10 @@ class App extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Ride User App',
           theme: ThemeData(
+            //primaryColor: const Color.fromARGB(255, 4, 125, 141),
             primaryColor: const Color(0xFF007292),
             visualDensity: VisualDensity.adaptivePlatformDensity,
+            //scaffoldBackgroundColor: const Color.fromARGB(255, 4, 125, 141),
             scaffoldBackgroundColor: const Color(0xFF007292),
             appBarTheme: const AppBarTheme(elevation: 0.0),
             textTheme: GoogleFonts.robotoTextTheme(
@@ -134,9 +137,9 @@ class App extends StatelessWidget {
             }
           },
         ),
-      //} catch (e, s) {
-      //print(s);
-    //}
+      } catch (e, s) {
+      print(s);
+    }
     );
   }
 }

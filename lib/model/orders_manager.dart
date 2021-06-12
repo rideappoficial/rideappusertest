@@ -19,6 +19,7 @@ class OrdersManager extends ChangeNotifier{
     this.user = user;
     ordersModel.clear();
     _subscription?.cancel();
+    //print('User Id in OrderManager: ${user.id}');
     if(user != null){
       _listenToOrders();
     }

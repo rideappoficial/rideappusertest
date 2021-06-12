@@ -2,6 +2,7 @@ import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rideusertesteapp/common/customDrawer.dart';
+import 'package:rideusertesteapp/model/adimin_orders_manager.dart';
 import 'package:rideusertesteapp/model/admin_users_manager.dart';
 import 'package:rideusertesteapp/model/pageManager.dart';
 
@@ -30,9 +31,9 @@ class AdminUsersScreen extends StatelessWidget {
                 onTap: (){
                   //print('User Id: ${adminUsersManager.users[index].id}');
                   //print('User name: ${adminUsersManager.users[index].name}');
-                  //context.read<AdminOrdersManager>().setUserFilter(
-                      //adminUsersManager.users[index]
-                  //);
+                  context.read<AdminOrdersManager>().setUserFilter(
+                      adminUsersManager.users[index]
+                  );
                   context.read<PageManager>().setPage(5);
                 },
               );

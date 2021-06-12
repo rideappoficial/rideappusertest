@@ -34,21 +34,14 @@ class OrderTile extends StatelessWidget {
                     ),),
                 ],
               ),
-              Text('Em transporte',
+              Text(
+                orderModel.statusText,
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  color: primaryColor,
+                  color: orderModel.status == Status.canceled ? Colors.red : primaryColor,
                   fontSize: 14,
                 ),
               ),
-              /*
-              Text(order.statusText,
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  color: order.status == Status.canceled ? Colors.red : primaryColor,
-                  fontSize: 14,
-                ),),
-              */
             ],
           ),
         children: [
@@ -57,8 +50,7 @@ class OrderTile extends StatelessWidget {
               return OrderTourTile(cartTourModel: e);
             }).toList(),
           ),
-          /*
-          if(showControls && order.status != Status.canceled)
+          if(showControls && orderModel.status != Status.canceled)
             SizedBox(
               height: 50,
               child: ListView(
@@ -68,21 +60,23 @@ class OrderTile extends StatelessWidget {
                     onPressed: (){
                     showDialog(
                         context: context,
-                        builder: (_) => CancelOrderDialog(order),
+                        builder: (_) => CancelOrderDialog(orderModel),
                     );
                   }, child: Text('Cancelar'), textColor: Colors.red,),
-                  FlatButton(onPressed: order.back, child: Text('Recuar')),
-                  FlatButton(onPressed: order.advance, child: Text('Avançar')),
+                  FlatButton(onPressed: orderModel.back, child: Text('Recuar')),
+                  FlatButton(onPressed: orderModel.advanced, child: Text('Avançar')),
+                  /*
                   FlatButton(onPressed: (){
                     showDialog(
                       context: context,
                       builder: (_) => ExportAddressDialog(order.address),
                     );
                   }, child: Text('Endereço'), textColor: primaryColor,),
+                  */
                 ],
               ),
             ),
-          */
+          //*/
         ],
       ),
     );

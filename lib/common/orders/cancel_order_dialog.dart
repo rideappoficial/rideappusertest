@@ -19,9 +19,11 @@ class CancelOrderDialog extends StatelessWidget {
             child: const Text('Cancelar Pedido'),
         ),
         FlatButton(
-            //onPressed: (){ order.cancel()},
-            onPressed: (){},
-            child: const Text('Cancelar')),
+            onPressed: (){
+              orderModel.cancel();
+            },
+            child: const Text('Cancelar'),
+        ),
       ],
     );
   }
