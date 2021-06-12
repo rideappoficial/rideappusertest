@@ -48,7 +48,6 @@ class App extends StatelessWidget {
               update: (_, userManager, cartManager) =>
                   cartManager ..updateUser(userManager),
           ),
-          // Erro aqui abaixo ..
           ChangeNotifierProxyProvider<UserManager, OrdersManager>(
             create: (_) => OrdersManager(),
             lazy: false,
