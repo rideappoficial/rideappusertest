@@ -78,15 +78,6 @@ class OrderTile extends StatelessWidget {
                 ],
               ),
             ),
-          FlatButton(
-            onPressed: () {},
-            child: Text(
-              'Solicitar passeio agora',
-              style: TextStyle(
-                color: primaryColor,
-              ),
-            ),
-          ),
         ],
       ),
     );

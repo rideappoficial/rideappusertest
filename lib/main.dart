@@ -80,7 +80,7 @@ class App extends StatelessWidget {
               Theme.of(context).textTheme,
             ),
           ),
-          home: HomeMapScreen(),
+          //home: HomeMapScreen(),
           onGenerateRoute: (settings) {
             switch (settings.name) {
               case '/login':

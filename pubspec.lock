@@ -318,7 +318,7 @@ packages:
     source: hosted
     version: "3.4.0"
   location_permissions:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: location_permissions
       url: "https://pub.dartlang.org"
@@ -352,6 +352,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  outline_material_icons:
+    dependency: "direct main"
+    description:
+      name: outline_material_icons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   path:
     dependency: transitive
     description:
@@ -454,7 +461,7 @@ packages:
       name: sliding_up_panel
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "2.0.0+1"
   smooth_star_rating:
     dependency: "direct main"
     description:

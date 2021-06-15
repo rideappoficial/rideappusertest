@@ -1,4 +1,4 @@
-name: rideusertesteapp
+name: rideruserapp
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -28,32 +28,29 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  cloud_firestore: ^0.13.5
-  firebase_auth: ^0.16.1
-  firebase_storage: ^3.1.5
-  google_fonts: ^1.1.0
-  provider: ^4.1.2 #DC
-  carousel_pro: ^1.0.0
-  smooth_star_rating: ^1.1.1
+  fluttertoast: ^7.1.1
+  firebase_core: ^0.5.0+1
+  #firebase_core: ^4.4+3 #New
+  firebase_auth: ^0.18.1+2
+  #firebase_auth: ^0.16.0 #New
+  firebase_database: ^4.1.1
+  #firebase_database: ^3.1.5 #New
+  #google_maps_flutter: ^1.0.3
+  google_maps_flutter: ^0.5.28 #New
+  #geolocator: ^6.1.1
+  geolocator: ^5.3.1 #New
+  http: ^0.12.2
+  #http: ^0.13.1
+  #provider: ^4.3.2+2
+  provider: ^4.1.2
+  flutter_polyline_points: ^0.2.4
+  #flutter_polyline_points: ^1.0.0
   font_awesome_flutter: ^8.10.0
-  credit_card_type_detector: ^1.1.0
-  mask_text_input_formatter: ^1.2.1
-  cpf_cnpj_validator: ^2.0.0
-  flip_card: ^0.5.0
-  keyboard_actions: ^3.4.0
-  transparent_image: ^2.0.0
-  uuid: ^3.0.4
-  flutter_staggered_grid_view: ^0.3.0
-  brasil_fields: ^1.1.2
-  alphabet_list_scroll_view: ^1.0.6
-  faker: ^2.0.0
-  #sliding_up_panel: ^1.0.2
-  sliding_up_panel: ^2.0.0+1
-  #geolocator: ^5.3.2+2 #DC
-  geolocator: ^5.3.1 #NG
-  google_maps_flutter: ^0.5.28
+  animated_text_kit: ^4.2.1
+  #animated_text_kit: ^2.2.1 #New
   outline_material_icons: ^0.1.1
-  location_permissions: 3.0.0+1
+  connectivity: ^0.4.8+6
+  flutter_geofire: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -96,10 +93,6 @@ flutter:
     - family: Brand-Bold
       fonts:
         - asset: fonts/bolt-semibold.ttf
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

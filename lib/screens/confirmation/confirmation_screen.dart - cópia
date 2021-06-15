@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rideusertesteapp/common/orders/order_tile.dart';
 import 'package:rideusertesteapp/common/orders/order_tour_tile.dart';
 import 'package:rideusertesteapp/model/orderModel.dart';
 
@@ -18,7 +17,6 @@ class ConfirmationScreen extends StatelessWidget {
         child: ListView(
           shrinkWrap: true,
           children: <Widget>[
-            /*
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -42,14 +40,9 @@ class ConfirmationScreen extends StatelessWidget {
                 ],
               ),
             ),
-            */
             Column(
               children: orderModel.items.map((e){
-                //return OrderTourTile(cartTourModel: e);
-                return OrderTile(
-                  orderModel,
-                  showControls: false,
-                );
+                return OrderTourTile(cartTourModel: e);
               }).toList(),
             )
           ],
