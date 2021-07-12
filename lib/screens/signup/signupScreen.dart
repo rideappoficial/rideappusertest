@@ -112,18 +112,25 @@ class SignupScreen extends StatelessWidget {
                           if(formKey.currentState.validate()){
                             formKey.currentState.save();
                             if(user.password != user.confirmPassword){
+                              /*
                               scaffoldKey.currentState.showSnackBar(
                                 SnackBar(
                                   content: const Text('Senhas não coimcidem!'),
                                   backgroundColor: Colors.red,
                                 ),
                               );
+                              */
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text('Senhas não coimcidem!'),
+                                backgroundColor: Colors.red,
+                              ));
                               return;
                             }
                             context.read<UserManager>().signup(
                                 user: user,
                                 onSucess: (){
                                   //Navigator.pop(context);
+                                  debugPrint('Sucesso');
                                 },
                                 onFail: (e){
                                   scaffoldKey.currentState.showSnackBar(

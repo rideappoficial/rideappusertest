@@ -11,7 +11,7 @@ class TourManager extends ChangeNotifier{
   final Firestore firestore = Firestore.instance;
 
   List<TourModel> allTours = [];
-  //List<TourModel> filteredTours = [];
+
   String _search = '';
 
   String get search => _search;

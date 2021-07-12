@@ -7,6 +7,7 @@ import 'package:rideusertesteapp/model/userManager.dart';
 import 'package:rideusertesteapp/screens/admin_orders/admin_orders_screen.dart';
 import 'package:rideusertesteapp/screens/admin_users/admin_users_screen.dart';
 import 'package:rideusertesteapp/screens/home/home_screen.dart';
+import 'package:rideusertesteapp/screens/login/loginScreen.dart';
 import 'package:rideusertesteapp/screens/orders/orders_screen.dart';
 import 'package:rideusertesteapp/screens/tours/toursScreen.dart';
 

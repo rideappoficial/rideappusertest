@@ -14,6 +14,7 @@ class UserManager extends ChangeNotifier{
   final Firestore firestore = Firestore.instance;
 
   UserModel user;
+  //FirebaseUser user;
 
   bool _loading = false;
   bool get loading => _loading;
@@ -24,10 +25,10 @@ class UserManager extends ChangeNotifier{
     loading = true;
     try{
       final AuthResult result = await auth.signInWithEmailAndPassword(email: user.email, password: user.password);
-      await Future.delayed(Duration(seconds: 4));
-      //print(result.user.uid);
+
       await _loadCurrentUser(firebaseUser: result.user);
       onSucess();
+
     } on PlatformException catch (e) {
       onFail(getErrorString(e.code));
     }
@@ -47,10 +48,12 @@ class UserManager extends ChangeNotifier{
         email: user.email,
         password: user.password,
       );
-      user.id = result.user.uid;
+
+      user.id = result.user.uid; // com UserModel
       this.user = user;
       await user.saveData();
       onSucess();
+
     } on PlatformException catch (e) {
       onFail(getErrorString(e.code));
     }
@@ -66,9 +69,10 @@ class UserManager extends ChangeNotifier{
   Future<void> _loadCurrentUser({FirebaseUser firebaseUser}) async {
     final FirebaseUser currentUser = firebaseUser ?? await auth.currentUser();
     if(currentUser != null){
+      //print('CurrentUser: ${currentUser.uid}');
       final DocumentSnapshot docUser = await firestore.collection('users').document(currentUser.uid).get();
       user = UserModel.fromDocument(docUser);
-
+      //print('User Name: ${user.name}');
       final docAdmin =
       await firestore.collection('admins').document(user.id).get();
       if (docAdmin.exists) {
@@ -76,7 +80,6 @@ class UserManager extends ChangeNotifier{
       }
       notifyListeners();
     }
-
   }
 
   bool get adminEnabled => user != null && user.admin;

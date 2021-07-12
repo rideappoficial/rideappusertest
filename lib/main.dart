@@ -81,6 +81,7 @@ class App extends StatelessWidget {
             ),
           ),
           //home: HomeMapScreen(),
+          initialRoute: '/',
           onGenerateRoute: (settings) {
             switch (settings.name) {
               case '/login':
@@ -127,6 +128,7 @@ class App extends StatelessWidget {
                   ),
                 );
               case '/':
+              //case '/base':
               default:
                 return MaterialPageRoute(
                   builder: (_) => BaseScreen(),

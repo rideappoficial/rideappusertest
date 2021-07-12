@@ -4,10 +4,6 @@ import 'package:rideusertesteapp/model/cart_tour.dart';
 import 'package:rideusertesteapp/model/toursModel.dart';
 import 'package:rideusertesteapp/model/user.dart';
 import 'package:rideusertesteapp/model/userManager.dart';
-//import 'package:rideruserapp/models/cart_tour.dart';
-//import 'package:rideruserapp/models/tours_model.dart';
-//import 'package:rideruserapp/models/user.dart';
-//import 'package:rideruserapp/models/user_manager.dart';
 
 class CartManager extends ChangeNotifier{
 
