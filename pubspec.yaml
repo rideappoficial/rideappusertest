@@ -54,6 +54,7 @@ dependencies:
   google_maps_flutter: ^0.5.28
   outline_material_icons: ^0.1.1
   location_permissions: 3.0.0+1
+  cloud_functions: ^0.5.0
 
 dev_dependencies:
   flutter_test:
