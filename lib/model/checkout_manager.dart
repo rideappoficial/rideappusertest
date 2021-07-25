@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:rideusertesteapp/model/credit_card.dart';
 import 'package:rideusertesteapp/model/orderModel.dart';
+import 'package:rideusertesteapp/services/cielo_payment.dart';
 //import 'package:rideruserapp/models/orderModel.dart';
 import 'cart_manager.dart';
 
@@ -20,15 +22,22 @@ class CheckoutManager extends ChangeNotifier {
   }
 
   final Firestore firestore = Firestore.instance;
-  //final CieloPayment cieloPayment = CieloPayment();
+  final CieloPayment cieloPayment = CieloPayment();
 
   // ignore: use_setters_to_change_properties
   void updateCart(CartManager cartManager) {
     this.cartManager = cartManager;
   }
 
-  Future<void> checkout({Function onSuccess}) async {
+  Future<void> checkout({ CreditCard creditCard, Function onStockFail,Function onSuccess}) async {
        loading = true;
+       final orderModelId = await _getOrderId();
+        cieloPayment.authorize(
+          creditCard: creditCard,
+          price: cartManager.toursPrice,
+          orderId: orderModelId.toString(),
+          user: cartManager.user
+        );
        try {
         //await _decrementStock();
         } catch (e) {
@@ -44,7 +53,7 @@ class CheckoutManager extends ChangeNotifier {
 
        // - - - -
 
-        final orderModelId = await _getOrderId();
+        //final orderModelId = await _getOrderId();
 
        final orderModel = OrderModel.fromCartManager(cartManager);
        orderModel.orderId = orderModelId.toString();

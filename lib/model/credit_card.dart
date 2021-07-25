@@ -1,5 +1,7 @@
 //import 'package:credit_card_type_detector/credit_card_type_detector.dart';
 
+import 'package:credit_card_type_detector/credit_card_type_detector.dart';
+
 class CreditCard {
   String number;
   String holder;
@@ -13,7 +15,7 @@ class CreditCard {
   void setNumber(String number) {
     this.number = number;
     // Temp
-    //brand = detectCCType(number.replaceAll(' ', '')).toString().toUpperCase().split(".").last;
+    brand = detectCCType(number.replaceAll(' ', '')).toString().toUpperCase().split(".").last;
   }
 
   Map<String, dynamic> toJson(){

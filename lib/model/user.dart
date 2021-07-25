@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
-
   UserModel({this.id, this.name, this.email, this.password});
 
-  UserModel.fromDocument(DocumentSnapshot document){
+  UserModel.fromDocument(DocumentSnapshot document) {
     id = document.documentID;
     name = document.data['name'] as String;
     email = document.data['email'] as String;
+    cpf = document.data['cpf'] as String;
   }
 
   String id;
@@ -16,8 +16,10 @@ class UserModel {
   String password;
   String confirmPassword;
   bool admin = false;
+  String cpf;
 
-  DocumentReference get firestoreRef => Firestore.instance.document('users/$id');
+  DocumentReference get firestoreRef =>
+      Firestore.instance.document('users/$id');
 
   CollectionReference get cartReference => firestoreRef.collection('cart');
 
@@ -25,14 +27,17 @@ class UserModel {
     await firestoreRef.setData(toMap());
   }
 
-  Map<String, dynamic> toMap(){
+  Map<String, dynamic> toMap() {
     return {
       'name': name,
       'email': email,
+      
+      if (cpf != null) 'cpf': cpf,
     };
   }
 
+  void setCpf(String cpf) {
+    this.cpf = cpf;
+    saveData();
+  }
 }
-
-
-

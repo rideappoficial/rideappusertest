@@ -1,3 +1,4 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +25,7 @@ class CPFField extends StatelessWidget {
               ),
             ),
             TextFormField(
-              //initialValue: userManager.user.cpf,
+              initialValue: userManager.user.cpf,
               decoration: InputDecoration(
                 hintText: '000.000.000-00',
                 isDense: true
@@ -32,7 +33,8 @@ class CPFField extends StatelessWidget {
               keyboardType: TextInputType.number,
               inputFormatters: [
                 WhitelistingTextInputFormatter.digitsOnly,
-                //CpfInputFormatter()
+                
+                CpfInputFormatter()
               ],
               validator: (cpf){
                 if(cpf.isEmpty) return 'Campo Obrigatotio';

@@ -7,7 +7,6 @@ import 'card_back.dart';
 import 'card_front.dart';
 
 class CreditCardWidget extends StatefulWidget {
-
   const CreditCardWidget(this.creditCard);
   final CreditCard creditCard;
 

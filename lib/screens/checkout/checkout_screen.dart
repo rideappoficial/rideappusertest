@@ -63,7 +63,22 @@ class CheckoutScreen extends StatelessWidget {
                       //buttonText: 'Finalizar Pedido',
                       buttonText: 'Pagar e fazer passeio agora',
                       onPressed: () {
-                        checkoutManager.checkout(
+                        if (formKey.currentState.validate()) {
+                          formKey.currentState.save();
+                          checkoutManager.checkout(
+                            creditCard: creditCard,
+                            onStockFail: (e) {
+                              Navigator.of(context).popUntil(
+                                  (route) => route.settings.name == '/cart');
+                            },
+                            onSuccess: (order) {
+                              Navigator.of(context).popUntil(
+                                  (route) => route.settings.name == '/');
+                              Navigator.of(context)
+                                  .pushNamed('/confirmation', arguments: order);
+                            },
+                          );
+                          /*checkoutManager.checkout(
                           onSuccess: (orderModel) {
                             Navigator.of(context).popUntil(
                                 (route) => route.settings.name == '/');
@@ -74,10 +89,9 @@ class CheckoutScreen extends StatelessWidget {
                             );
                           },
                         );
-                        //if (formKey.currentState.validate()) {
-                        //formKey.currentState.save();
+                        */
 
-                        /*
+                          /*
                         checkoutManager.checkout(
                           //creditCard: creditCard,
                           onStockFail: (e) {
@@ -93,7 +107,7 @@ class CheckoutScreen extends StatelessWidget {
                         );
                         */
 
-                        //}
+                        }
                       }, //checkoutManager.checkout(),
                     ),
                   ],
